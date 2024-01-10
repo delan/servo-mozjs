@@ -9,7 +9,7 @@ CONFIGURE_FLAGS := \
 	--disable-tests \
 	--disable-export-js \
 	--disable-shared-js \
-	--build-backends=FasterMake+RecursiveMake
+	--build-backends=FasterMake,RecursiveMake
 
 ifneq (,$(CARGO_FEATURE_STREAMS))
     CONFIGURE_FLAGS += --enable-js-streams
