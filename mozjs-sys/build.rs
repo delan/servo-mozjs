@@ -237,7 +237,7 @@ fn build_spidermonkey(build_dir: &Path) {
 
     let cargo_manifest_dir = PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").unwrap());
     let result = cmd
-        .args(&["-R", "-f"])
+        .args(&["-R", "--jobserver-style=pipe", "-f"])
         .arg(cargo_manifest_dir.join("makefile.cargo"))
         .current_dir(&build_dir)
         .env("SRC_DIR", &cargo_manifest_dir.join("mozjs"))
