@@ -228,7 +228,10 @@ fn build_spidermonkey(build_dir: &Path) {
     cmd.env("CPPFLAGS", cppflags);
 
     if let Some(makeflags) = env::var_os("CARGO_MAKEFLAGS") {
-        cmd.env("MAKEFLAGS", makeflags);
+        // cmd.env("MAKEFLAGS", makeflags);
+        panic!("MAKEFLAGS={:?}", makeflags);
+    } else {
+        cmd.env("MAKEFLAGS", " --jobserver-style=pipe");
     }
 
     if target.contains("apple") || target.contains("freebsd") {
